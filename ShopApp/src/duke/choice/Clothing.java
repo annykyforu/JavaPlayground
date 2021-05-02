@@ -18,6 +18,9 @@ public class Clothing {
     public double getPrice(){
         return this.price;
     }
+    public String getSize() {
+        return this.size;
+    }
 
 
 }
