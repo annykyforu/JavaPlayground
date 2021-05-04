@@ -10,12 +10,13 @@ public class Customer {
     public Customer(String _name, String _size){
         this.name = _name;
         this.size = _size;
-        this.items = new Vector<Clothing>();
+        this.items = new Vector<>();
     }
 
     public Customer(String _name, int _measurement){
         this.name = _name;
         setSize(_measurement);
+        this.items = new Vector<>();
     }
 
     public String getName(){
