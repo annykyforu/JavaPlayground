@@ -27,10 +27,12 @@ public class ShopApp {
         System.out.println("Customer: " + c1.getName() + ", size: " + c1.getCustomerSize());
         c1.printItemsInfo();
         System.out.println("Total cost: " + roundOffTo2DecPlaces(c1.getTotalClothingCost()));
+        c1.calcAveragePrice();
 
         System.out.println("------");
         System.out.println("Customer: " + c2.getName() + ", size: " + c2.getCustomerSize());
         c2.printItemsInfo();
         System.out.println("Total cost: " + roundOffTo2DecPlaces(c2.getTotalClothingCost()));
+        c2.calcAveragePrice();
     }
 }

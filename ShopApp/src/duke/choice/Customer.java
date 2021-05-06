@@ -76,12 +76,23 @@ public class Customer {
     }
 
     public double getTotalClothingCost(){
+        if(items == null) return 0;
         double total = 0.0;
-        if(items != null){
-            for (Clothing item : getItems()) {
-                    total += item.getPrice();
-            }
+        for (Clothing item : getItems()) {
+            total += item.getPrice();
         }
         return total;
+    }
+
+    //For Exception testing the code below is written to produce Exception on purpose
+    public void calcAveragePrice() {
+        int average;
+        try {
+            average = (int)getTotalClothingCost()/(int)getItems().size();
+            System.out.println("Average cost rounded: " + average +
+                    " items: " + getItems().size());
+        } catch (ArithmeticException e){
+            System.out.println("Exception: tried to divide by zero.");
+        }
     }
 }
