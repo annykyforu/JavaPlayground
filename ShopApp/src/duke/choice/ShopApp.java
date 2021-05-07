@@ -1,5 +1,7 @@
 package duke.choice;
 
+import java.util.Collections;
+
 public class ShopApp {
 
     static String roundOffTo2DecPlaces(double val){
@@ -34,5 +36,11 @@ public class ShopApp {
         c2.printItemsInfo();
         System.out.println("Total cost: " + roundOffTo2DecPlaces(c2.getTotalClothingCost()));
         c2.calcAveragePrice();
+
+        System.out.println("------");
+        System.out.println("after applying Sort");
+        Collections.sort(c1.getItems());
+        c1.printItemsInfo();
+
     }
 }

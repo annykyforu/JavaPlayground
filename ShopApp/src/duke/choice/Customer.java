@@ -70,7 +70,7 @@ public class Customer {
             System.out.println("   Customer basket is empty.");
         } else {
             for (Clothing item : getItems()) {
-                item.printInfo();
+                System.out.println(item);;
             }
         }
     }
