@@ -1,5 +1,13 @@
 package duke.choice;
 
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Collections;
+
 public class ShopApp {
 
     static String roundOffTo2DecPlaces(double val){
@@ -34,5 +42,23 @@ public class ShopApp {
         c2.printItemsInfo();
         System.out.println("Total cost: " + roundOffTo2DecPlaces(c2.getTotalClothingCost()));
         c2.calcAveragePrice();
+
+        System.out.println("------");
+        System.out.println("after applying Sort");
+        Collections.sort(c1.getItems());
+        c1.printItemsInfo();
+
+        try {
+            ItemList list = new ItemList(items);
+            Routing routing = Routing.builder()
+                                .get("/items", list).build();
+            ServerConfiguration config = ServerConfiguration.builder()
+                                .bindAddress(InetAddress.getLocalHost())
+                                .port(9999).build();
+            WebServer webServer = WebServer.create(config, routing);
+            webServer.start();
+        } catch (UnknownHostException hostException) {
+            hostException.printStackTrace();
+        }
     }
 }
